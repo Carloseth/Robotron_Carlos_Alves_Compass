@@ -28,4 +28,28 @@ def Q4():
         print('Você é uma criança')
     else: 
         print('Você é um adolescente')
-Q4()
+#Q4()
+
+def Q5(x):
+    contarPares = 0
+    somaPar = 0
+    media = 0
+    for c in x :
+        if c % 2 == 0: 
+            somaPar += c
+            contarPares += 1
+    media = somaPar / contarPares
+    print(media)
+#Q5([1,3,4,5,6,7,8,10]) 
+
+def Q6():
+    x = int(input('digite numero inteiro: '))
+    for i in range(0, x):
+        if i % 2 != 0:
+            print(f'o número: {i} é ímpar')
+#Q6()
+
+def Q7(x,y: int):
+    media = x + y / 2
+    print(media)
+Q7(2,2)

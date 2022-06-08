@@ -1,0 +1,19 @@
+{
+    "identificador": "91231213",
+    "status": "Rodando no sistema",
+    "username": "Carlos",
+    "senha": "carlos123",
+    "matricula": "123456",
+    "dados":{
+        "telefone": "99123921",
+        "departamento": "Departamento de testes",
+        "Perfil": "QA",
+        "nascimento": "10/10/2021",
+        "linksCadastro":[
+            "https//:testeJSON1.com","https//:testeJSON2.com"
+        ]
+    },
+    "empresa": "Compass.uol",
+    "conhecimento": "compartilhar"
+}
+

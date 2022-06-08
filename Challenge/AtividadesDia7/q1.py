@@ -1,9 +1,8 @@
 import json
-#Questão1
 def Q1():
-    with open("./Challenge/AtividadesDia7/Dados/json1.json", encoding= "utf-8") as partida:
-       #Parse para dicionario
-        teste = json.load(partida)
-        print(teste)
+    with open("./Challenge/AtividadesDia7/Dados/json1.json") as partida:
+        #Parse para dicionario
+        partida_manipulavel = json.load(partida)
+        #Print Json inteiro em formato dicionario
+        print(partida_manipulavel)
 Q1()
-

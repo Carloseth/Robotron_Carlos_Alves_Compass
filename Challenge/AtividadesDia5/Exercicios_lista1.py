@@ -9,14 +9,16 @@ def Q2():
     print(media)
 Q2()
 
-def Q3(valor1,valor2):
+def Q3():
+    valor1 = int(input("Digite o primeiro valor: "))
+    valor2 = int(input("Digite o segundo valor: "))
     somaValores = valor1 + valor2
     print(f'O resultado da soma é: {somaValores}')
     if somaValores % 2 == 1:
         print(f'{somaValores} é um número ímpar')
     else:
         print(f'{somaValores} é um número par')
-Q3(4,6)
+Q3()
 
 def Q4():
     idade = (int(input('Digite sua idade: ')))

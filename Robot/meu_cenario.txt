@@ -1,0 +1,6 @@
+#Meu cenario de teste da API SERVEREST
+
+POST- Fazer login sem sucesso 
+- Dados inválidos
+- Usuario sem cadastro
+- A requisição deve retornar o status code 400

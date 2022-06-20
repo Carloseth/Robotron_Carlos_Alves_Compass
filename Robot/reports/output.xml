@@ -1,406 +1,97 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 5.0.1 (Python 3.10.5 on win32)" generated="20220617 17:12:15.013" rpa="false" schemaversion="3">
+<robot generator="Robot 5.0.1 (Python 3.10.5 on win32)" generated="20220620 11:38:51.218" rpa="false" schemaversion="3">
 <suite id="s1" name="Base" source="C:\Users\Sntca\OneDrive\Área de Trabalho\Gabriel\PYTHON\robotron\Robotron_Carlos_Alves_Compass\Robot\base.robot">
-<test id="s1-t1" name="Cenario: GET Todos os Usuarios 200" line="12">
+<test id="s1-t1" name="Cenario 2: POST Cadastrar usuario 201" line="22">
 <kw name="Criar Sessao">
 <kw name="Create Session" library="RequestsLibrary">
 <arg>serverest</arg>
 <arg>https://serverest.dev</arg>
 <doc>Create Session: create a HTTP session to a server</doc>
-<msg timestamp="20220617 17:12:15.118" level="INFO">Creating Session using : alias=serverest, url=https://serverest.dev, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
-<status status="PASS" starttime="20220617 17:12:15.118" endtime="20220617 17:12:15.119"/>
+<msg timestamp="20220620 11:38:51.335" level="INFO">Creating Session using : alias=serverest, url=https://serverest.dev, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20220620 11:38:51.335" endtime="20220620 11:38:51.336"/>
 </kw>
-<status status="PASS" starttime="20220617 17:12:15.118" endtime="20220617 17:12:15.119"/>
+<status status="PASS" starttime="20220620 11:38:51.335" endtime="20220620 11:38:51.336"/>
 </kw>
-<kw name="GET Endpoint /usuarios">
-<kw name="GET On Session" library="RequestsLibrary">
+<kw name="POST Endpoint /usuarios">
+<kw name="Create Dictionary" library="BuiltIn">
+<var>&amp;{payload}</var>
+<arg>nome=uasdadsuhaasdasassqfw</arg>
+<arg>email=testandoasdooooo@gmail.com</arg>
+<arg>password=gatoalado123</arg>
+<arg>administrador=true</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20220620 11:38:51.337" level="INFO">&amp;{payload} = { nome=uasdadsuhaasdasassqfw | email=testandoasdooooo@gmail.com | password=gatoalado123 | administrador=true }</msg>
+<status status="PASS" starttime="20220620 11:38:51.336" endtime="20220620 11:38:51.337"/>
+</kw>
+<kw name="POST On Session" library="RequestsLibrary">
 <var>${response}</var>
 <arg>serverest</arg>
 <arg>/usuarios</arg>
-<doc>Sends a GET request on a previously created HTTP Session.</doc>
-<msg timestamp="20220617 17:12:15.724" level="INFO">GET Request : url=https://serverest.dev/usuarios 
+<arg>data=&amp;{payload}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<msg timestamp="20220620 11:38:51.870" level="INFO">POST Request : url=https://serverest.dev/usuarios 
  path_url=/usuarios 
- headers={'User-Agent': 'python-requests/2.28.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
- body=None 
+ headers={'User-Agent': 'python-requests/2.28.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '102', 'Content-Type': 'application/x-www-form-urlencoded'} 
+ body=nome=uasdadsuhaasdasassqfw&amp;email=testandoasdooooo%40gmail.com&amp;password=gatoalado123&amp;administrador=true 
  </msg>
-<msg timestamp="20220617 17:12:15.724" level="INFO">GET Response : url=https://serverest.dev/usuarios 
- status=200, reason=OK 
- headers={'access-control-allow-origin': '*', 'x-dns-prefetch-control': 'off', 'x-frame-options': 'SAMEORIGIN', 'strict-transport-security': 'max-age=15552000; includeSubDomains', 'x-download-options': 'noopen', 'x-content-type-options': 'nosniff', 'x-xss-protection': '1; mode=block', 'x-moesif-transaction-id': 'bc5c93c4-47f7-48fd-9c84-fa7f4b97744b', 'content-type': 'application/json; charset=utf-8', 'X-Cloud-Trace-Context': 'b94aefcf97c0a0f2fdd2c29a570af8eb;o=1', 'Date': 'Fri, 17 Jun 2022 20:12:21 GMT', 'Server': 'Google Frontend', 'Content-Length': '12428'} 
+<msg timestamp="20220620 11:38:51.871" level="INFO">POST Response : url=https://serverest.dev/usuarios 
+ status=201, reason=Created 
+ headers={'access-control-allow-origin': '*', 'x-dns-prefetch-control': 'off', 'x-frame-options': 'SAMEORIGIN', 'strict-transport-security': 'max-age=15552000; includeSubDomains', 'x-download-options': 'noopen', 'x-content-type-options': 'nosniff', 'x-xss-protection': '1; mode=block', 'x-moesif-transaction-id': '411f67a5-5855-46b1-832b-c25a32f7bb97', 'content-type': 'application/json; charset=utf-8', 'X-Cloud-Trace-Context': '4c75522bf0f8b64206ffc1947a77a12a', 'Date': 'Mon, 20 Jun 2022 14:38:54 GMT', 'Server': 'Google Frontend', 'Content-Length': '82'} 
  body={
-    "quantidade": 56,
-    "usuarios": [
-        {
-            "nome": "Willians Carvalho",
-            "email": "Lindalva_Xavier@gmail.com",
-            "password": "ZPeOBe62TEjlz52",
-            "administrador": "false",
-            "_id": "0HoP48G2Z0CZ3uCV"
-        },
-        {
-            "nome": "Auselicia Carvalho",
-            "email": "Anatalia_Martins@bol.com.br",
-            "password": "XfVz6mTukwKLcSh",
-            "administrador": "true",
-            "_id": "0mmiJCMZi98fJgW0"
-        },
-        {
-            "nome": "Fulano da Silva",
-            "email": "fulano@qa.com",
-            "password": "teste",
-            "administrador": "true",
-            "_id": "0uxuPY0cbmQhpEz1"
-        },
-        {
-            "nome": "Haruo Barros",
-            "email": "Dijosilene_Macedo94@hotmail.com",
-            "password": "5jtooBOxaO4QNlh",
-            "administrador": "true",
-            "_id": "12g7iDAkDEtKSJZi"
-        },
-        {
-            "nome": "Farley Oliveira",
-            "email": "Rita14@bol.com.br",
-            "password": "Cdr6YU_bD8SIsHo",
-            "administrador": "true",
-            "_id": "22KLA3uIwP4cwZd1"
-        },
-        {
-            "nome": "Alysson Souza",
-            "email": "Naoko59@gmail.com",
-            "password": "QaowiTW11Z4IVT0",
-            "administrador": "true",
-            "_id": "7fqLOqz5TqpLphpD"
-        },
-        {
-            "nome": "Dicler Barros",
-            "email": "Ednilson29@yahoo.com",
-            "password": "eNzEWMXPpMLlF1W",
-            "administrador": "true",
-            "_id": "87AAHxOkLtK2YkLB"
-        },
-        {
-            "nome": "Joãoj",
-            "email": "Ben56@hotmail.com",
-            "password": "teste",
-            "administrador": "true",
-            "_id": "9MTn0gjmdGtqhF86"
-        },
-        {
-            "nome": "Joãoq",
-            "email": "Andre_Conroy@yahoo.com",
-            "password": "teste",
-            "administrador": "true",
-            "_id": "9gAmhvucEPfbdp6Y"
-        },
-        {
-            "nome": "Leandra Saraiva Jr.",
-            "email": "Wilma.Braga65@yahoo.com",
-            "password": "798pm8dmvgp6D7A",
-            "administrador": "false",
-            "_id": "Bc1hQRrJ418WC1n5"
-        },
-        {
-            "nome": "Gabriela Nogueira",
-            "email": "Heraldo70@hotmail.com",
-            "password": "d5fuCFooh83AUIe",
-            "administrador": "false",
-            "_id": "C2BUatQkkpMnHrWY"
-        },
-        {
-            "nome": "Joãox",
-            "email": "Dimitri.Ward@yahoo.com",
-            "password": "teste",
-            "administrador": "true",
-            "_id": "CU0vOHmDPbIdaMTN"
-        },
-        {
-            "nome": "Roselia Pereira Filho",
-            "email": "Petrnio_Saraiva@hotmail.com",
-            "password": "MQvAaPekLQ61Lp5",
-            "administrador": "false",
-            "_id": "CZNsuQ3zpPY5pgCH"
-        },
-        {
-            "nome": "Neilton Xavier",
-            "email": "Eliza.Carvalho@bol.com.br",
-            "password": "6k2oERDhpM2bgj9",
-            "administrador": "true",
-            "_id": "F9Lp2abrRMb45tUC"
-        },
-        {
-            "nome": "Telma Costa",
-            "email": "Ederson81@gmail.com",
-            "password": "vcCADMA4LVe_OoY",
-            "administrador": "true",
-            "_id": "GgPi854liLh7AeN1"
-        },
-        {
-            "nome": "Zulamar Souza",
-            "email": "Ventura36@hotmail.com",
-            "password": "7SHzRFdZHdPPxsW",
-            "administrador": "true",
-            "_id": "IZIDVeQDzLm5pqbg"
-        },
-        {
-            "nome": "Alexandra Martins",
-            "email": "Barbara53@yahoo.com",
-            "password": "aRLRyARjAmEo4Ad",
-            "administrador": "false",
-            "_id": "Iqgh81mDuLrme00j"
-        },
-        {
-            "nome": "Rubem Macedo",
-            "email": "Ronildo_Souza@hotmail.com",
-            "password": "gQHnykMw_C_0pIL",
-            "administrador": "false",
-            "_id": "KzEdJtI2PJgB94rV"
-        },
-        {
-            "nome": "Julian Albuquerque",
-            "email": "Milorad.Moreira@yahoo.com",
-            "password": "XiesXiwWPmjM3gJ",
-            "administrador": "false",
-            "_id": "L61c7EnEljewJJ1K"
-        },
-        {
-            "nome": "Uldis Franco",
-            "email": "Maria77@yahoo.com",
-            "password": "Zdt9a3DHi19B5te",
-            "administrador": "true",
-            "_id": "NCIagl8jossy8ZTr"
-        },
-        {
-            "nome": "rafinha",
-            "email": "rafinha@bol.com",
-            "password": "teste",
-            "administrador": "false",
-            "_id": "QxsPLRYqQV76MARh"
-        },
-        {
-            "nome": "Srta. Alessandro Xavier",
-            "email": "Sirlcio_Reis@live.com",
-            "password": "YD5e5dKJ6AMPkH0",
-            "administrador": "true",
-            "_id": "RYkT8dagYEHgo0bg"
-        },
-        {
-            "nome": "Rejane Souza",
-            "email": "Sidalia_Oliveira97@gmail.com",
-            "password": "1OhLdv_SnPVTgwI",
-            "administrador": "false",
-            "_id": "SBOdsEePL0AtLfBu"
-        },
-        {
-            "nome": "Guadalupe Batista",
-            "email": "Dov_Barros41@hotmail.com",
-            "password": "cmcWEcNyWZTlXtf",
-            "administrador": "true",
-            "_id": "SXvqNaCL9EMZteH4"
-        },
-        {
-            "nome": "Norma Kshlerin",
-            "email": "Nickolas_Terry@yahoo.com",
-            "password": "m0OzbQMpep4tBed",
-            "administrador": "true",
-            "_id": "SpvVvbZfleQf8i8O"
-        },
-        {
-            "nome": "Joãoc",
-            "email": "Guiseppe_Gaylord4@hotmail.com",
-            "password": "teste",
-            "administrador": "true",
-            "_id": "U8ergmgJxtV5flRU"
-        },
-        {
-            "nome": "Rosangela Franco",
-            "email": "Erdice_Nogueira@live.com",
-            "password": "88KfNmPgOSiUOSj",
-            "administrador": "false",
-            "_id": "UmMFhf76H7SXW4jG"
-        },
-        {
-            "nome": "Joãof",
-            "email": "Gust14@hotmail.com",
-            "password": "teste",
-            "administrador": "true",
-            "_id": "WFKxcido6iCZgEtP"
-        },
-        {
-            "nome": "Lindenberg Costa",
-            "email": "Glucia_Barros27@bol.com.br",
-            "password": "6aVCfuDaYV5SjDW",
-            "administrador": "true",
-            "_id": "X6oyzCITZdN4y0jV"
-        },
-        {
-            "nome": "João7",
-            "email": "Maiya.Hagenes63@hotmail.com",
-            "password": "teste",
-            "administrador": "true",
-            "_id": "XE1yk69xxIQrT3DI"
-        },
-        {
-            "nome": "Raul Barros",
-            "email": "Fabiola_Albuquerque87@bol.com.br",
-            "password": "9oKR5YtFHBlalEw",
-            "administrador": "true",
-            "_id": "Y8cqGOjz2GSTjt9Q"
-        },
-        {
-            "nome": "Jamiro Costa",
-            "email": "Ademir.Melo32@hotmail.com",
-            "password": "Xc66BOkoADyNpHI",
-            "administrador": "false",
-            "_id": "YusTQ8lEznyhm8Mu"
-        },
-        {
-            "nome": "Joãot",
-            "email": "Nikita99@yahoo.com",
-            "password": "teste",
-            "administrador": "true",
-            "_id": "ZGIgR7U5wjBcjE78"
-        },
-        {
-            "nome": "Dr. Ilka Martins",
-            "email": "Orozimbo.Pereira@yahoo.com",
-            "password": "CDjucoKyWrSXXAH",
-            "administrador": "true",
-            "_id": "ZIp69x7tJwiPEciz"
-        },
-        {
-            "nome": "Ariel Carvalho",
-            "email": "Arnaldo84@live.com",
-            "password": "NVwo_in59MIai03",
-            "administrador": "true",
-            "_id": "cdMCgNuRPgHfPt7e"
-        },
-        {
-            "nome": "Benilde Martins",
-            "email": "Bart77@gmail.com",
-            "password": "WcwWvg5sCbyQtF7",
-            "administrador": "true",
-            "_id": "cxb7kbMfBTkziyti"
-        },
-        {
-            "nome": "Maristela Moreira",
-            "email": "Cyrus87@hotmail.com",
-            "password": "o54C6Q5LIQlFRas",
-            "administrador": "true",
-            "_id": "duX6HH0lMOWTN8Rr"
-        },
-        {
-            "nome": "Christian Hahn",
-            "email": "Aimee50@yahoo.com",
-            "password": "DYPgLmfQ5IuwN0k",
-            "administrador": "true",
-            "_id": "eSdFFe2C8GxQsmWc"
-        },
-        {
-            "nome": "Joãoo",
-            "email": "Zita.Erdman96@gmail.com",
-            "password": "teste",
-            "administrador": "true",
-            "_id": "efzgAH9MdxUVzxSq"
-        },
-        {
-            "nome": "Joãob",
-            "email": "Theron21@gmail.com",
-            "password": "teste",
-            "administrador": "true",
-            "_id": "erkhVA1vdiaAQPpK"
-        },
-        {
-            "nome": "Eni Carvalho Filho",
-            "email": "Jilvan.Barros@yahoo.com",
-            "password": "8s0SVUH0KvjlbO5",
-            "administrador": "false",
-            "_id": "fwGXkT9Bd31HCTPX"
-        },
-        {
-            "nome": "Glorineide Xavier",
-            "email": "Rachel_Albuquerque@live.com",
-            "password": "ZROAGQrZ7hqagA2",
-            "administrador": "true",
-            "_id": "hN2KLzVOYxhEufme"
-        },
-        {
-            "nome": "Cinthia Martins",
-            "email": "Neyber_Barros0@hotmail.com",
-            "password": "IfVSWompXruuJzO",
-            "administrador": "false",
-            "_id": "hYXqcngVO2HElsKe"
-        },
-        {
-            "nome": "Aminadab Braga",
-            "email": "Claudia32@hotmail.com",
-            "password": "o86PGPoHjSCX7oR",
-            "administrador": "true",
-            "_id": "hv1lLa2lGKBkyy2I"
-        },
-        {
-            "nome": "Kerry Haag",
-            "email": "Gabe_Mraz@hotmail.com",
-            "password": "Gls5Rvd8LQNOo3q",
-            "administrador": "true",
-            "_id": "knHU06bpKvIQHTPT"
-        },
-        {
-      ... (set the log level to DEBUG or TRACE to see the full content) 
+    "message": "Cadastro realizado com sucesso",
+    "_id": "Meg3GOvJcVfyWA7T"
+} 
  </msg>
-<msg timestamp="20220617 17:12:15.724" level="INFO">D:\Python-3.10\lib\site-packages\urllib3\connectionpool.py:1043: InsecureRequestWarning: Unverified HTTPS request is being made to host 'serverest.dev'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+<msg timestamp="20220620 11:38:51.871" level="INFO">D:\Python-3.10\lib\site-packages\urllib3\connectionpool.py:1043: InsecureRequestWarning: Unverified HTTPS request is being made to host 'serverest.dev'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
   warnings.warn(</msg>
-<msg timestamp="20220617 17:12:15.725" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20220617 17:12:15.119" endtime="20220617 17:12:15.725"/>
+<msg timestamp="20220620 11:38:51.872" level="INFO">${response} = &lt;Response [201]&gt;</msg>
+<status status="PASS" starttime="20220620 11:38:51.337" endtime="20220620 11:38:51.872"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>Response: ${response.content}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220620 11:38:51.872" endtime="20220620 11:38:51.873"/>
 </kw>
 <kw name="Set Global Variable" library="BuiltIn">
 <arg>${response}</arg>
 <doc>Makes a variable available globally in all tests and suites.</doc>
-<msg timestamp="20220617 17:12:15.726" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20220617 17:12:15.725" endtime="20220617 17:12:15.726"/>
+<msg timestamp="20220620 11:38:51.874" level="INFO">${response} = &lt;Response [201]&gt;</msg>
+<status status="PASS" starttime="20220620 11:38:51.873" endtime="20220620 11:38:51.874"/>
 </kw>
-<status status="PASS" starttime="20220617 17:12:15.119" endtime="20220617 17:12:15.726"/>
+<status status="PASS" starttime="20220620 11:38:51.336" endtime="20220620 11:38:51.874"/>
 </kw>
-<kw name="Validar Status Code &quot;200&quot;" sourcename="Validar Status Code &quot;${statuscode}&quot;">
+<kw name="Validar Status Code &quot;201&quot;" sourcename="Validar Status Code &quot;${statuscode}&quot;">
 <kw name="Should Be True" library="BuiltIn">
 <arg>${response.status_code} == ${statuscode}</arg>
 <doc>Fails if the given condition is not true.</doc>
-<status status="PASS" starttime="20220617 17:12:15.726" endtime="20220617 17:12:15.727"/>
+<status status="PASS" starttime="20220620 11:38:51.874" endtime="20220620 11:38:51.875"/>
 </kw>
-<status status="PASS" starttime="20220617 17:12:15.726" endtime="20220617 17:12:15.727"/>
+<status status="PASS" starttime="20220620 11:38:51.874" endtime="20220620 11:38:51.875"/>
 </kw>
-<status status="PASS" starttime="20220617 17:12:15.117" endtime="20220617 17:12:15.728"/>
-</test>
-<test id="s1-t2" name="Cenario: GET Produtos 200" line="18">
-<kw name="Criar Sessao">
-<kw name="Create Session" library="RequestsLibrary">
-<arg>serverest</arg>
-<arg>https://serverest.dev</arg>
-<doc>Create Session: create a HTTP session to a server</doc>
-<msg timestamp="20220617 17:12:15.731" level="INFO">Creating Session using : alias=serverest, url=https://serverest.dev, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
-<status status="PASS" starttime="20220617 17:12:15.730" endtime="20220617 17:12:15.731"/>
+<kw name="Validar Se Mensagem Contem &quot;sucesso&quot;" sourcename="Validar Se Mensagem Contem &quot;${palavra}&quot;">
+<kw name="Should Contain" library="BuiltIn">
+<arg>${response.json()["message"]}</arg>
+<arg>${palavra}</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" starttime="20220620 11:38:51.876" endtime="20220620 11:38:51.877"/>
 </kw>
-<status status="PASS" starttime="20220617 17:12:15.730" endtime="20220617 17:12:15.731"/>
+<status status="PASS" starttime="20220620 11:38:51.876" endtime="20220620 11:38:51.877"/>
 </kw>
-<kw name="GET Endpoint /produtos">
-<msg timestamp="20220617 17:12:15.732" level="FAIL">No keyword with name 'GET Endpoint /produtos' found. Did you try using keyword 'RequestsLibrary.GET' and forgot to use enough whitespace between keyword and arguments?</msg>
-<status status="FAIL" starttime="20220617 17:12:15.732" endtime="20220617 17:12:15.732"/>
-</kw>
-<kw name="Validar Status Code &quot;200&quot;" sourcename="Validar Status Code &quot;${statuscode}&quot;">
-<status status="NOT RUN" starttime="20220617 17:12:15.733" endtime="20220617 17:12:15.733"/>
-</kw>
-<status status="FAIL" starttime="20220617 17:12:15.730" endtime="20220617 17:12:15.733">No keyword with name 'GET Endpoint /produtos' found. Did you try using keyword 'RequestsLibrary.GET' and forgot to use enough whitespace between keyword and arguments?</status>
+<tag>POST</tag>
+<status status="PASS" starttime="20220620 11:38:51.334" endtime="20220620 11:38:51.877"/>
 </test>
 <doc>Arquivo simples para requisições HTTP em APIS</doc>
-<status status="FAIL" starttime="20220617 17:12:15.013" endtime="20220617 17:12:15.735"/>
+<status status="PASS" starttime="20220620 11:38:51.219" endtime="20220620 11:38:51.879"/>
 </suite>
 <statistics>
 <total>
-<stat pass="1" fail="1" skip="0">All Tests</stat>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
 </total>
 <tag>
+<stat pass="1" fail="0" skip="0">POST</stat>
 </tag>
 <suite>
-<stat pass="1" fail="1" skip="0" id="s1" name="Base">Base</stat>
+<stat pass="1" fail="0" skip="0" id="s1" name="Base">Base</stat>
 </suite>
 </statistics>
 <errors>

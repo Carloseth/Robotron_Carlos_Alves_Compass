@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 5.0.1 (Python 3.10.5 on win32)" generated="20220623 16:48:39.418" rpa="false" schemaversion="3">
+<suite id="s1" name="Base" source="C:\Users\Sntca\OneDrive\Área de Trabalho\Gabriel\PYTHON\Robotron_Carlos_Alves_Compass\Robot\aula_demetrio\base.robot">
+<test id="s1-t1" name="Cenario 2: POST Cadastrar usuario 201" line="26">
+<kw name="Criar Sessao">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>serverest</arg>
+<arg>http://localhost:3000/</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20220623 16:48:39.535" level="INFO">Creating Session using : alias=serverest, url=http://localhost:3000/, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20220623 16:48:39.535" endtime="20220623 16:48:39.536"/>
+</kw>
+<status status="PASS" starttime="20220623 16:48:39.535" endtime="20220623 16:48:39.536"/>
+</kw>
+<kw name="POST Endpoint /usuarios" library="usuarios_keywords">
+<kw name="Create Dictionary" library="BuiltIn">
+<var>&amp;{payload}</var>
+<arg>nome=${nome_do_usuario}</arg>
+<arg>email=${email_do_usuario}</arg>
+<arg>password=${senha_do_usuario}</arg>
+<arg>administrador=true</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20220623 16:48:39.538" level="INFO">&amp;{payload} = { nome=moura pano | email=judaspriesteste@gmail.com | password=judaspriest123 | administrador=true }</msg>
+<status status="PASS" starttime="20220623 16:48:39.537" endtime="20220623 16:48:39.538"/>
+</kw>
+<kw name="POST On Session" library="RequestsLibrary">
+<var>${response}</var>
+<arg>serverest</arg>
+<arg>/usuarios</arg>
+<arg>data=&amp;{payload}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<msg timestamp="20220623 16:48:39.547" level="INFO">POST Request : url=http://localhost:3000/usuarios 
+ path_url=/usuarios 
+ headers={'User-Agent': 'python-requests/2.28.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '92', 'Content-Type': 'application/x-www-form-urlencoded'} 
+ body=nome=moura+pano&amp;email=judaspriesteste%40gmail.com&amp;password=judaspriest123&amp;administrador=true 
+ </msg>
+<msg timestamp="20220623 16:48:39.547" level="INFO">POST Response : url=http://localhost:3000/usuarios 
+ status=400, reason=Bad Request 
+ headers={'Access-Control-Allow-Origin': '*', 'x-dns-prefetch-control': 'off', 'x-frame-options': 'SAMEORIGIN', 'strict-transport-security': 'max-age=15552000; includeSubDomains', 'x-download-options': 'noopen', 'x-content-type-options': 'nosniff', 'x-xss-protection': '1; mode=block', 'x-moesif-transaction-id': 'c49d1f01-c127-4d03-bb76-bbbf6c3418a6', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '53', 'Date': 'Thu, 23 Jun 2022 19:48:39 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={
+    "message": "Este email já está sendo usado"
+} 
+ </msg>
+<msg timestamp="20220623 16:48:39.547" level="FAIL">HTTPError: 400 Client Error: Bad Request for url: http://localhost:3000/usuarios</msg>
+<status status="FAIL" starttime="20220623 16:48:39.538" endtime="20220623 16:48:39.549"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>Response: ${response.content}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" starttime="20220623 16:48:39.549" endtime="20220623 16:48:39.549"/>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${response}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="NOT RUN" starttime="20220623 16:48:39.550" endtime="20220623 16:48:39.550"/>
+</kw>
+<status status="FAIL" starttime="20220623 16:48:39.537" endtime="20220623 16:48:39.550"/>
+</kw>
+<kw name="Validar Status Code &quot;201&quot;" sourcename="Validar Status Code &quot;${statuscode}&quot;">
+<status status="NOT RUN" starttime="20220623 16:48:39.551" endtime="20220623 16:48:39.551"/>
+</kw>
+<kw name="Validar Se Mensagem Contem &quot;sucesso&quot;" sourcename="Validar Se Mensagem Contem &quot;${palavra}&quot;">
+<status status="NOT RUN" starttime="20220623 16:48:39.553" endtime="20220623 16:48:39.553"/>
+</kw>
+<tag>POST</tag>
+<status status="FAIL" starttime="20220623 16:48:39.534" endtime="20220623 16:48:39.553">HTTPError: 400 Client Error: Bad Request for url: http://localhost:3000/usuarios</status>
+</test>
+<doc>Arquivo simples para requisições HTTP em APIS</doc>
+<status status="FAIL" starttime="20220623 16:48:39.420" endtime="20220623 16:48:39.555"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="1" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="0" fail="1" skip="0">POST</stat>
+</tag>
+<suite>
+<stat pass="0" fail="1" skip="0" id="s1" name="Base">Base</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

@@ -1,5 +1,5 @@
 * Settings *
-Documentation   USUARIOS.ROBOT
+Documentation   carrinhos.robot
 Library     RequestsLibrary
 # Library	    JSONLibrary
 * Keywords

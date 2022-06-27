@@ -1,5 +1,5 @@
 * Settings *
-Documentation   USUARIOS.ROBOT
+Documentation   usuarios.robot
 Library     RequestsLibrary
 
 * Keywords *

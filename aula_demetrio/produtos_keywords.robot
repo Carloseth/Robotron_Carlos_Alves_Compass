@@ -8,7 +8,6 @@ POST Endpoint /produtos
     ${response}             POST On Session      serverest          /produtos   data=&{payload}      headers=&{header}
     Log to Console          Response: ${response.content}
     Set Global Variable     ${response}
-
 DELETE Endpoint /produtos
     &{header}               Create Dictionary      Authorization=${token_auth}
     ${response}             DELETE On Session      serverest          /produtos/${id_produto}        headers=&{header}

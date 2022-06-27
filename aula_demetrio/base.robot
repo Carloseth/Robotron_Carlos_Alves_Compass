@@ -61,7 +61,7 @@ Cenario 7: DELETE Excluir Produto 200
 Cenario: GET produtos
     [tags] getproduto
     GET Endpoint /produtos
-# Cenario 8: GET Produto cadastrado
+
 #Sessão para criação de Keywords Personalizados
 * Keywords *
 Criar Sessao
@@ -69,22 +69,8 @@ Criar Sessao
 
 Validar Status Code "${statuscode}"
     Should Be True          ${response.status_code} == ${statuscode}
-
-
 Validar Quantidade "${quantidade}"
     Should Be Equal     ${response.json()["quantidade"]}        ${quantidade}
 
 Validar Se Mensagem Contem "${palavra}"
     Should Contain      ${response.json()["message"]}           ${palavra}
-
-Printar Nome Usuario
-    Log To Console      Nome: ${response.json()["usuarios"][0]["nome"]}
-
-Printar Email Usuario
-    Log To Console      Email: ${response.json()["usuarios"][0]["email"]}
-
-Printar Senha Usuario
-    Log To Console      Senha: ${response.json()["usuarios"][0]["password"]}
-
-Printar ID Usuario
-    Log To Console      ID: ${response.json()["usuarios"][0]["_id"]}

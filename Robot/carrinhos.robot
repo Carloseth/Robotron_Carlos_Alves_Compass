@@ -14,3 +14,8 @@ GET Endpoint /carrinhos
     ${response}             GET On Session      serverest       /carrinhos/qbMqntef4iTOwWfg
     Log to Console          \n ${response.content}
     Set Global Variable     ${response}
+
+Delete Endpoint /carrinhos
+    ${response}             Delete On Session      serverest    /usuarios/qbMqntef4iTOwWfg
+    Log to Console          Response: ${response.content}
+    Set Global Variable     ${response}

@@ -68,16 +68,3 @@ Cenario: Consultar Carrinho Cadastrado Por Usuario(funcionando)
     Criar Sessao
     GET Carrinho
     Validar Status Code "200"
-* Keywords *
-
-Criar Sessao
-    Create Session      serverest               ${HOST}
-
-Validar Se Mensagem Contem "Email e/ou senha inválidos"
-    Should Be Equal         ${response.json()["message"]}     Email e/ou senha inválidos
-Validar Se Mensagem Cadastro Contem "sucesso"
-    Should Be Equal         ${response.json()["message"]}     Cadastro realizado com sucesso
-
-Validar ter logado
-    Should Be Equal         ${response.json()["message"]}       Login realizado com sucesso
-    Should Not Be Empty     ${response.json()["authorization"]}

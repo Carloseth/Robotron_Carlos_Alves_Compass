@@ -1,96 +1,152 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 5.0.1 (Python 3.10.5 on win32)" generated="20220627 10:10:32.636" rpa="false" schemaversion="3">
+<robot generator="Robot 5.0.1 (Python 3.10.5 on win32)" generated="20220629 10:00:48.783" rpa="false" schemaversion="3">
 <suite id="s1" name="Base" source="C:\Users\Sntca\OneDrive\Área de Trabalho\Gabriel\PYTHON\Robotron_Carlos_Alves_Compass\Robot\base.robot">
-<test id="s1-t1" name="Cenario: Usuario Login 401 (funcionando)" line="42">
-<kw name="Criar Sessao">
+<test id="s1-t1" name="Cenario: Realizar o Login Com Dados Validos(funcionando)" line="54">
+<kw name="Criar Sessao" library="common">
 <kw name="Create Session" library="RequestsLibrary">
 <arg>serverest</arg>
 <arg>${HOST}</arg>
 <doc>Create Session: create a HTTP session to a server</doc>
-<msg timestamp="20220627 10:10:32.758" level="INFO">Creating Session using : alias=serverest, url=http://localhost:3000/, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
-<status status="PASS" starttime="20220627 10:10:32.758" endtime="20220627 10:10:32.758"/>
+<msg timestamp="20220629 10:00:50.666" level="INFO">Creating Session using : alias=serverest, url=http://localhost:3000/, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20220629 10:00:50.665" endtime="20220629 10:00:50.666"/>
 </kw>
-<status status="PASS" starttime="20220627 10:10:32.757" endtime="20220627 10:10:32.758"/>
+<status status="PASS" starttime="20220629 10:00:50.664" endtime="20220629 10:00:50.666"/>
 </kw>
-<kw name="Realizar Login Com Email Errado" library="login">
+<kw name="Realizar login" library="login">
+<kw name="Create Dictionary" library="BuiltIn">
+<var>&amp;{header}</var>
+<arg>Authorization=${token_auth}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20220629 10:00:50.667" level="INFO">&amp;{header} = { Authorization=Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImZ1bGFub0BxYS5jb20iLCJwYXNzd29yZCI6InRlc3RlIiwiaWF0IjoxNjU2MzM0OTAxLCJleHAiOjE2NTYzMzU1MDF9.wh-pjNOCohBtc-kbu2ulJDc8uTghqcgglgg...</msg>
+<status status="PASS" starttime="20220629 10:00:50.666" endtime="20220629 10:00:50.667"/>
+</kw>
 <kw name="Create Dictionary" library="BuiltIn">
 <var>&amp;{payload}</var>
-<arg>email=${Email_errado}</arg>
-<arg>password=teste</arg>
+<arg>email=${email_do_usuario}</arg>
+<arg>password=${senha_do_usuario}</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20220627 10:10:32.760" level="INFO">&amp;{payload} = { email=carlos@gmail.com | password=teste }</msg>
-<status status="PASS" starttime="20220627 10:10:32.759" endtime="20220627 10:10:32.760"/>
+<msg timestamp="20220629 10:00:50.669" level="INFO">&amp;{payload} = { email=fulano@qa.com | password=teste }</msg>
+<status status="PASS" starttime="20220629 10:00:50.668" endtime="20220629 10:00:50.669"/>
 </kw>
 <kw name="POST On Session" library="RequestsLibrary">
 <var>${response}</var>
 <arg>serverest</arg>
 <arg>/login</arg>
 <arg>data=&amp;{payload}</arg>
-<arg>expected_status= 401</arg>
 <doc>Sends a POST request on a previously created HTTP Session.</doc>
-<msg timestamp="20220627 10:10:32.769" level="INFO">POST Request : url=http://localhost:3000/login 
+<msg timestamp="20220629 10:00:50.680" level="INFO">POST Request : url=http://localhost:3000/login 
  path_url=/login 
- headers={'User-Agent': 'python-requests/2.28.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '39', 'Content-Type': 'application/x-www-form-urlencoded'} 
- body=email=carlos%40gmail.com&amp;password=teste 
+ headers={'User-Agent': 'python-requests/2.28.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '36', 'Content-Type': 'application/x-www-form-urlencoded'} 
+ body=email=fulano%40qa.com&amp;password=teste 
  </msg>
-<msg timestamp="20220627 10:10:32.769" level="INFO">POST Response : url=http://localhost:3000/login 
- status=401, reason=Unauthorized 
- headers={'Access-Control-Allow-Origin': '*', 'x-dns-prefetch-control': 'off', 'x-frame-options': 'SAMEORIGIN', 'strict-transport-security': 'max-age=15552000; includeSubDomains', 'x-download-options': 'noopen', 'x-content-type-options': 'nosniff', 'x-xss-protection': '1; mode=block', 'x-moesif-transaction-id': '3b66fbb2-1608-469e-a01c-f80d02e1c6df', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '48', 'Date': 'Mon, 27 Jun 2022 13:10:32 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+<msg timestamp="20220629 10:00:50.681" level="INFO">POST Response : url=http://localhost:3000/login 
+ status=200, reason=OK 
+ headers={'Access-Control-Allow-Origin': '*', 'x-dns-prefetch-control': 'off', 'x-frame-options': 'SAMEORIGIN', 'strict-transport-security': 'max-age=15552000; includeSubDomains', 'x-download-options': 'noopen', 'x-content-type-options': 'nosniff', 'x-xss-protection': '1; mode=block', 'x-moesif-transaction-id': '30abfb75-991d-4317-9b65-c578eb101cf2', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '265', 'Date': 'Wed, 29 Jun 2022 13:00:50 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
  body={
-    "message": "Email e/ou senha inválidos"
+    "message": "Login realizado com sucesso",
+    "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImZ1bGFub0BxYS5jb20iLCJwYXNzd29yZCI6InRlc3RlIiwiaWF0IjoxNjU2NTA3NjUwLCJleHAiOjE2NTY1MDgyNTB9.zKwoPa1Xxj-6pC-aMBXdmbsJ6Vps3FruvT9IVUuRER8"
 } 
  </msg>
-<msg timestamp="20220627 10:10:32.769" level="INFO">${response} = &lt;Response [401]&gt;</msg>
-<status status="PASS" starttime="20220627 10:10:32.760" endtime="20220627 10:10:32.769"/>
+<msg timestamp="20220629 10:00:50.681" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20220629 10:00:50.669" endtime="20220629 10:00:50.681"/>
 </kw>
 <kw name="Log To Console" library="BuiltIn">
 <arg>Response: ${response.content}</arg>
 <doc>Logs the given message to the console.</doc>
-<status status="PASS" starttime="20220627 10:10:32.769" endtime="20220627 10:10:32.771"/>
+<status status="PASS" starttime="20220629 10:00:50.681" endtime="20220629 10:00:50.682"/>
 </kw>
 <kw name="Set Global Variable" library="BuiltIn">
 <arg>${response}</arg>
 <doc>Makes a variable available globally in all tests and suites.</doc>
-<msg timestamp="20220627 10:10:32.772" level="INFO">${response} = &lt;Response [401]&gt;</msg>
-<status status="PASS" starttime="20220627 10:10:32.771" endtime="20220627 10:10:32.772"/>
+<msg timestamp="20220629 10:00:50.683" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20220629 10:00:50.683" endtime="20220629 10:00:50.683"/>
 </kw>
-<status status="PASS" starttime="20220627 10:10:32.759" endtime="20220627 10:10:32.772"/>
+<status status="PASS" starttime="20220629 10:00:50.666" endtime="20220629 10:00:50.683"/>
 </kw>
-<kw name="Validar Status Code &quot;401&quot;" library="common" sourcename="Validar Status Code &quot;${statuscode}&quot;">
+<kw name="Validar Status Code &quot;200&quot;" library="common" sourcename="Validar Status Code &quot;${statuscode}&quot;">
 <kw name="Should Be True" library="BuiltIn">
 <arg>${response.status_code}</arg>
 <arg>"${statuscode}"</arg>
 <doc>Fails if the given condition is not true.</doc>
-<status status="PASS" starttime="20220627 10:10:32.773" endtime="20220627 10:10:32.774"/>
+<status status="PASS" starttime="20220629 10:00:50.684" endtime="20220629 10:00:50.685"/>
 </kw>
-<status status="PASS" starttime="20220627 10:10:32.773" endtime="20220627 10:10:32.774"/>
+<status status="PASS" starttime="20220629 10:00:50.684" endtime="20220629 10:00:50.685"/>
 </kw>
-<kw name="Validar Se Mensagem Contem &quot;Email e/ou senha inválidos&quot;">
+<kw name="Validar ter logado" library="common">
 <kw name="Should Be Equal" library="BuiltIn">
 <arg>${response.json()["message"]}</arg>
-<arg>Email e/ou senha inválidos</arg>
+<arg>Login realizado com sucesso</arg>
 <doc>Fails if the given objects are unequal.</doc>
-<status status="PASS" starttime="20220627 10:10:32.775" endtime="20220627 10:10:32.775"/>
+<status status="PASS" starttime="20220629 10:00:50.686" endtime="20220629 10:00:50.708"/>
 </kw>
-<status status="PASS" starttime="20220627 10:10:32.775" endtime="20220627 10:10:32.776"/>
+<kw name="Should Not Be Empty" library="BuiltIn">
+<arg>${response.json()["authorization"]}</arg>
+<doc>Verifies that the given item is not empty.</doc>
+<msg timestamp="20220629 10:00:50.709" level="INFO">Length is 192</msg>
+<status status="PASS" starttime="20220629 10:00:50.708" endtime="20220629 10:00:50.709"/>
 </kw>
-<tag>login401</tag>
-<status status="PASS" starttime="20220627 10:10:32.757" endtime="20220627 10:10:32.776"/>
+<status status="PASS" starttime="20220629 10:00:50.686" endtime="20220629 10:00:50.710"/>
+</kw>
+<kw name="Armazenar Token" library="login">
+<kw name="Validar ter logado" library="common">
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${response.json()["message"]}</arg>
+<arg>Login realizado com sucesso</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20220629 10:00:50.710" endtime="20220629 10:00:50.712"/>
+</kw>
+<kw name="Should Not Be Empty" library="BuiltIn">
+<arg>${response.json()["authorization"]}</arg>
+<doc>Verifies that the given item is not empty.</doc>
+<msg timestamp="20220629 10:00:50.712" level="INFO">Length is 192</msg>
+<status status="PASS" starttime="20220629 10:00:50.712" endtime="20220629 10:00:50.712"/>
+</kw>
+<status status="PASS" starttime="20220629 10:00:50.710" endtime="20220629 10:00:50.713"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${token_auth}</var>
+<arg>${response.json()["authorization"]}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20220629 10:00:50.713" level="INFO">${token_auth} = Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImZ1bGFub0BxYS5jb20iLCJwYXNzd29yZCI6InRlc3RlIiwiaWF0IjoxNjU2NTA3NjUwLCJleHAiOjE2NTY1MDgyNTB9.zKwoPa1Xxj-6pC-aMBXdmbsJ6Vps3FruvT9IVUuRER8</msg>
+<status status="PASS" starttime="20220629 10:00:50.713" endtime="20220629 10:00:50.713"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>Token Salvo: ${token_auth}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220629 10:00:50.713" endtime="20220629 10:00:50.715"/>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${token_auth}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20220629 10:00:50.715" level="INFO">${token_auth} = Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImZ1bGFub0BxYS5jb20iLCJwYXNzd29yZCI6InRlc3RlIiwiaWF0IjoxNjU2NTA3NjUwLCJleHAiOjE2NTY1MDgyNTB9.zKwoPa1Xxj-6pC-aMBXdmbsJ6Vps3FruvT9IVUuRER8</msg>
+<status status="PASS" starttime="20220629 10:00:50.715" endtime="20220629 10:00:50.715"/>
+</kw>
+<status status="PASS" starttime="20220629 10:00:50.710" endtime="20220629 10:00:50.715"/>
+</kw>
+<tag>login200</tag>
+<status status="PASS" starttime="20220629 10:00:50.663" endtime="20220629 10:00:50.715"/>
 </test>
 <doc>CENARIOS DE TESTES DO CHALLENGE</doc>
-<status status="PASS" starttime="20220627 10:10:32.638" endtime="20220627 10:10:32.777"/>
+<status status="PASS" starttime="20220629 10:00:48.783" endtime="20220629 10:00:50.717"/>
 </suite>
 <statistics>
 <total>
 <stat pass="1" fail="0" skip="0">All Tests</stat>
 </total>
 <tag>
-<stat pass="1" fail="0" skip="0">login401</stat>
+<stat pass="1" fail="0" skip="0">login200</stat>
 </tag>
 <suite>
 <stat pass="1" fail="0" skip="0" id="s1" name="Base">Base</stat>
 </suite>
 </statistics>
 <errors>
+<msg timestamp="20220629 10:00:50.650" level="ERROR">Error in file 'C:\Users\Sntca\OneDrive\Área de Trabalho\Gabriel\PYTHON\Robotron_Carlos_Alves_Compass\Robot\dynamics.robot' on line 3: Initializing library 'FakerLibrary' with arguments [ locale=pt/br ] failed: AttributeError: Invalid configuration for faker locale `pt/br`
+Traceback (most recent call last):
+  File "D:\Python-3.10\lib\site-packages\FakerLibrary\keywords.py", line 42, in __init__
+    self._fake = faker.factory.Factory.create(locale, providers)
+  File "D:\Python-3.10\lib\site-packages\faker\factory.py", line 43, in create
+    raise AttributeError(msg)
+AttributeError: Invalid configuration for faker locale `pt/br`</msg>
 </errors>
 </robot>

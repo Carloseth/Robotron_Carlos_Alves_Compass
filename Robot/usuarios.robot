@@ -1,7 +1,7 @@
 * Settings *
 Documentation   usuarios.robot
 Library     RequestsLibrary
-
+Resource    ./dynamics.robot
 * Keywords *
 Cadastrar Usuario
     &{payload}              Create Dictionary   nome=${nome_do_usuario}  email=${email_do_usuario}  password=${senha_do_usuario}    administrador=true
@@ -17,3 +17,8 @@ Deletar usuario
     ${response}             Delete On Session      serverest    /usuarios/P93fUh9pvrT4tmX2
     Log to Console          Response: ${response.content}
     Set Global Variable     ${response}
+
+Cadastrar Usuario Dinamico Valido
+    ${payload}              Criar Dados Para Usuario Valido
+    Set Global Variable     ${payload}
+    Cadastrar Usuario

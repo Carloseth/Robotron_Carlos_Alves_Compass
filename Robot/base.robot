@@ -17,6 +17,11 @@ ${nome_do_usuario}      testeusuario
 ${senha_do_usuario}     teste
 ${email_do_usuario}     fulano@qa.com 
 * TEST CASES *
+# Cenario: Cadastrar O Carrinho do Usuario
+#     [tags]  cadastrarcarrinho
+#     Criar Sessao
+#     Cadastrar Carrinho
+#     Validar Status Code "201"
 Cenario: Produto com preco Float
     [Tags]  postprodutofloat
     Criar Sessao
@@ -51,6 +56,8 @@ Cenario: Cadastro Usuario(funcionando)
     Cadastrar Usuario
     Validar Status Code "201"
     Validar Se Mensagem Cadastro Contem "sucesso"
+    
+Cenario: 
 Cenario: Realizar o Login Com Dados Validos(funcionando)
     [tags]  login200
     Criar Sessao
@@ -58,11 +65,6 @@ Cenario: Realizar o Login Com Dados Validos(funcionando)
     Validar Status Code "200"
     Validar Ter Logado
     Armazenar Token
-# Cenario: Cadastrar O Carrinho do Usuario
-#     [tags]  cadastrarcarrinho
-#     Criar Sessao
-#     Cadastrar Carrinho
-#     Validar Status Code "201"
 Cenario: Consultar Carrinho Cadastrado Por Usuario(funcionando)
     [tags]  consultacarrinho
     Criar Sessao
